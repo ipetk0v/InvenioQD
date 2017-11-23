@@ -6,6 +6,9 @@ namespace Invenio.Data
 {
     public class InvenioDbContext : IdentityDbContext<User>
     {
+        public DbSet<CustomerUser> CustomerUser { get; set; }
+        public DbSet<User> User { get; set; }
+
         public InvenioDbContext(DbContextOptions<InvenioDbContext> options)
             : base(options)
         {

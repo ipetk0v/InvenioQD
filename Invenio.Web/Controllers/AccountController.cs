@@ -54,7 +54,7 @@ namespace Invenio.Web.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, lockoutOnFailure: false);
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
@@ -197,30 +197,33 @@ namespace Invenio.Web.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult Register(string returnUrl = null)
+        public IActionResult RegisterEmployee(string returnUrl = null)
         {
-            ViewData["ReturnUrl"] = returnUrl;
+            //ViewData["ReturnUrl"] = returnUrl;
+            return View();
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult RegisterCustomer(string returnUrl = null)
+        {
+            //ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
 
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
+        public async Task<IActionResult> RegisterEmployee(RegisterEmployeeViewModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
                 var user = new User {
-                    UserName = model.Username,
+                    FullName = model.FullName,
                     Email = model.Email,
-                    FirstName = model.FirstName,
-                    LasName = model.LasName,
-                    Manufacturing = model.Manufacturing,
                     PhoneNumber = model.Phone,
                     Region = model.Region,
-                    Country = model.Country,
-                    Position = model.Position
                 };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -255,12 +258,61 @@ namespace Invenio.Web.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RegisterCustomer(RegisterCustomerViewModel model, string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            if (ModelState.IsValid)
+            {
+                var user = new CustomerUser
+                {
+                    FullName = model.FullName,
+                    Email = model.Email,
+                    PhoneNumber = model.Phone,
+                    Region = model.Region,
+                    Manufacturing = model.Manufacturing,
+                    Country = model.Country
+                };
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    var role = "Customer";
+                    if (!await this.roleManager.RoleExistsAsync(role))
+                    {
+                        await this.roleManager.CreateAsync(new IdentityRole
+                        {
+                            Name = role
+                        });
+                    }
+
+                    var res = await this._userManager.AddToRoleAsync(user, role);
+
+                    if (res.Succeeded)
+                    {
+                        _logger.LogInformation("User created a new account with password.");
+
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        _logger.LogInformation("User created a new account with password.");
+                        return RedirectToLocal(returnUrl);
+                    }
+
+                }
+
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation("User logged out.");
-            return RedirectToAction(nameof(HomeController.Index), "Home");
+            return RedirectToAction(nameof(LoginController.Index), "Login");
         }
 
         [HttpPost]

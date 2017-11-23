@@ -5,21 +5,11 @@ namespace Invenio.Data.Models
 {
     public class User : IdentityUser
     {
+        [Required]
         [MaxLength(100)]
-        public string FirstName { get; set; }
-
-        [MaxLength(100)]
-        public string LasName { get; set; }
-
-        public PositionType Position { get; set; }
-
-        [MaxLength(100)]
-        public string Country { get; set; }
+        public string FullName { get; set; }
 
         [MaxLength(100)]
         public string Region { get; set; }
-
-        [MaxLength(100)]
-        public string Manufacturing { get; set; }
     }
 }

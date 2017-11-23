@@ -62,7 +62,7 @@ namespace Invenio.Web
                 routes.MapRoute(
                     name: "default",
                     template: "{controller}/{action}/{id?}",
-                    defaults: new { controller = "StartUp", action = "Index" });
+                    defaults: new { controller = "Home", action = "Index" });
             });
         }
     }

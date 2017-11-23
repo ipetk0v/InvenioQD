@@ -3,13 +3,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Invenio.Web.Models.AccountViewModels
 {
-    public class RegisterViewModel
+    public class RegisterEmployeeViewModel
     {
         [Required]
-        [MinLength(4)]
-        [MaxLength(20)]
-        [RegularExpression("[A-Z a-z]+", ErrorMessage = "Username must have only latters.")]
-        public string Username { get; set; }
+        [MinLength(2)]
+        [MaxLength(50)]
+        public string FullName { get; set; }
 
         [Required]
         [EmailAddress]
@@ -27,22 +26,11 @@ namespace Invenio.Web.Models.AccountViewModels
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [MaxLength(100)]
-        public string FirstName { get; set; }
-
-        [MaxLength(100)]
-        public string LasName { get; set; }
-
+        [Required]
         public PositionType Position { get; set; }
 
         [MaxLength(100)]
-        public string Country { get; set; }
-
-        [MaxLength(100)]
         public string Region { get; set; }
-
-        [MaxLength(100)]
-        public string Manufacturing { get; set; }
 
         [RegularExpression(@"\+\d{10,12}", ErrorMessage = "Phone start with a '+' sign and contain between 10 and 20 symbols.")]
         public string Phone { get; set; }

@@ -43,7 +43,7 @@ namespace CameraBazaar.Web.Infrastructures.Extensions
                         var adminUser = new User
                         {
                             Email = adminEmail,
-                            UserName = "Admin"
+                            FullName = "Admin"
                         };
 
                         await userManager.CreateAsync(adminUser, "admin123");
