@@ -1,0 +1,31 @@
+﻿@model IEnumerable<AllEmployeeModel>
+@{
+    ViewData["Title"] = "_ContactEmployee";
+}
+
+<div class="row" style=" margin-left: 0px; margin-right: 0px; padding-top: 10px;">
+    @foreach (var user in Model)
+    {
+        <div class="col-md-4">
+            <div class="box box-widget widget-user-2">
+                <div class="widget-user-header bg-yellow">
+                    <div class="widget-user-image">
+                        <img class="img-circle" src="https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-512.png" alt="User Avatar">
+                    </div>
+                    <h3 class="widget-user-username">@user.FullName</h3>
+                    <h5 class="widget-user-desc">@user.Position</h5>
+                </div>
+                <div class="box-footer no-padding">
+                    <ul class="nav nav-stacked">
+                        <li><a href="#">Email <span class="pull-right badge bg-blue">@user.Email</span></a></li>
+                        <li><a href="#">Phone Number <span class="pull-right badge bg-aqua">@user.PhoneNumber</span></a></li>
+                        <li><a href="#">Region <span class="pull-right badge bg-green">@user.Region</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+

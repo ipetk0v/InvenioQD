@@ -6884,6 +6884,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Invenio.Data\Invenio.Data.csproj" />
+    <ProjectReference Include="..\Invenio.Service\Invenio.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>

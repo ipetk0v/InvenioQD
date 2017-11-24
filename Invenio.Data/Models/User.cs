@@ -11,5 +11,8 @@ namespace Invenio.Data.Models
 
         [MaxLength(100)]
         public string Region { get; set; }
+
+        [Required]
+        public PositionType Position { get; set; }
     }
 }

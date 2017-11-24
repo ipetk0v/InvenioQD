@@ -1,11 +1,22 @@
-﻿using Invenio.Web.Models;
+﻿using Invenio.Service.Interfaces;
+using Invenio.Service.Models;
+using Invenio.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace Invenio.Web.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
+        private readonly IUsers users;
+
+        public HomeController(IUsers users)
+        {
+            this.users = users;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -20,9 +31,12 @@ namespace Invenio.Web.Controllers
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            if (User.IsInRole("Customer"))
+            {
+                return View(users.AllEmployee());
+            }
 
-            return View();
+            return View(users.AllCustomer());
         }
 
         public IActionResult Error()

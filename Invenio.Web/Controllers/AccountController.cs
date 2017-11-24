@@ -54,7 +54,7 @@ namespace Invenio.Web.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+                var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
@@ -220,10 +220,12 @@ namespace Invenio.Web.Controllers
             if (ModelState.IsValid)
             {
                 var user = new User {
+                    UserName = model.UserName,
                     FullName = model.FullName,
                     Email = model.Email,
                     PhoneNumber = model.Phone,
                     Region = model.Region,
+                    Position = model.Position
                 };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -267,12 +269,14 @@ namespace Invenio.Web.Controllers
             {
                 var user = new CustomerUser
                 {
+                    UserName = model.UserName,
                     FullName = model.FullName,
                     Email = model.Email,
                     PhoneNumber = model.Phone,
                     Region = model.Region,
                     Manufacturing = model.Manufacturing,
-                    Country = model.Country
+                    Country = model.Country,
+                    Position = model.Position
                 };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

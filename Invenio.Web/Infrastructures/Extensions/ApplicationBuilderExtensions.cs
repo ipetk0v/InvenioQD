@@ -20,39 +20,39 @@ namespace CameraBazaar.Web.Infrastructures.Extensions
                 var userManager = serviceScope.ServiceProvider.GetService<UserManager<User>>();
                 var roleManager = serviceScope.ServiceProvider.GetService<RoleManager<IdentityRole>>();
 
-                Task.Run(async () =>
-                {
-                    var adminName = GlobalConstants.GeneralManager;
+                //Task.Run(async () =>
+                //{
+                //    var adminName = GlobalConstants.GeneralManager;
 
-                    var roleExist = await roleManager.RoleExistsAsync(adminName);
+                //    var roleExist = await roleManager.RoleExistsAsync(adminName);
 
-                    if (!roleExist)
-                    {
-                        await roleManager.CreateAsync(new IdentityRole
-                        {
-                            Name = adminName
+                //    if (!roleExist)
+                //    {
+                //        await roleManager.CreateAsync(new IdentityRole
+                //        {
+                //            Name = adminName
 
-                        });
-                    }
+                //        });
+                //    }
 
-                    var adminEmail = "admin@abv.bg";
-                    var adminUserExist = await userManager.FindByEmailAsync(adminEmail);
+                //    var adminEmail = "admin@abv.bg";
+                //    var adminUserExist = await userManager.FindByEmailAsync(adminEmail);
 
-                    if (adminUserExist == null)
-                    {
-                        var adminUser = new User
-                        {
-                            Email = adminEmail,
-                            FullName = "Admin"
-                        };
+                //    if (adminUserExist == null)
+                //    {
+                //        var adminUser = new User
+                //        {
+                //            Email = adminEmail,
+                //            FullName = "Admin"
+                //        };
 
-                        await userManager.CreateAsync(adminUser, "admin123");
+                //        await userManager.CreateAsync(adminUser, "admin123");
 
-                        await userManager.AddToRoleAsync(adminUser, adminName);
-                    }
+                //        await userManager.AddToRoleAsync(adminUser, adminName);
+                //    }
 
-                }).GetAwaiter()
-                .GetResult();
+                //}).GetAwaiter()
+                //.GetResult();
             }
 
             return app;

@@ -1,6 +1,8 @@
 ﻿using CameraBazaar.Web.Infrastructures.Extensions;
 using Invenio.Data;
 using Invenio.Data.Models;
+using Invenio.Service.Implemented;
+using Invenio.Service.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -35,6 +37,8 @@ namespace Invenio.Web
                 .AddEntityFrameworkStores<InvenioDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddTransient<IUsers, Users>();
+
             services.AddMvc();
         }
 
@@ -62,7 +66,7 @@ namespace Invenio.Web
                 routes.MapRoute(
                     name: "default",
                     template: "{controller}/{action}/{id?}",
-                    defaults: new { controller = "Home", action = "Index" });
+                    defaults: new { controller = "Login", action = "Index" });
             });
         }
     }
