@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Invenio.Data.Models
 {
@@ -9,5 +10,7 @@ namespace Invenio.Data.Models
 
         [MaxLength(100)]
         public string Manufacturing { get; set; }
+
+        public List<Order> Orders { get; set; } = new List<Order>();
     }
 }

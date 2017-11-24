@@ -3,5 +3,12 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Report Page</h2>
+@if (User.IsInRole("Customer"))
+{
+    @Html.Partial("_Report");
+}
+else
+{
+    @Html.Partial("_Order");
+}
 

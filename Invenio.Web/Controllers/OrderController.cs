@@ -4,11 +4,16 @@ using Microsoft.AspNetCore.Mvc;
 namespace Invenio.Web.Controllers
 {
     [Authorize]
-    public class ReportController : Controller
+    public class OrderController : Controller
     {
         public IActionResult Index()
         {
             return View();
         }
+
+        public IActionResult Create()
+            => this.View();
+
+
     }
 }

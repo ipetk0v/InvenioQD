@@ -13,9 +13,10 @@ using System;
 namespace Invenio.Data.Migrations
 {
     [DbContext(typeof(InvenioDbContext))]
-    partial class InvenioDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171124113339_OrderAndReportTable")]
+    partial class OrderAndReportTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
