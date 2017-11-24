@@ -38,6 +38,7 @@ namespace Invenio.Web
                 .AddDefaultTokenProviders();
 
             services.AddTransient<IUsers, Users>();
+            services.AddTransient<IOrders, Orders>();
 
             services.AddMvc();
         }

@@ -6891,8 +6891,4 @@
     <TypeScriptCompile Include="wwwroot\bower_components\moment\moment.d.ts" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\OrderViewModels\" />
-  </ItemGroup>
-
 </Project>
