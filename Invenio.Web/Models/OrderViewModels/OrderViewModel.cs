@@ -1,5 +1,7 @@
 ﻿using Invenio.Data.Models;
+using Invenio.Service.Models;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Invenio.Web.Models.OrderViewModels
@@ -17,8 +19,5 @@ namespace Invenio.Web.Models.OrderViewModels
 
         [Required]
         public DateTime StartOrder { get; set; }
-
-        [Required]
-        public CustomerUser Customer { get; set; }
     }
 }

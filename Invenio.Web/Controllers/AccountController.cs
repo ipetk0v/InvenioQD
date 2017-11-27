@@ -316,7 +316,7 @@ namespace Invenio.Web.Controllers
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation("User logged out.");
-            return RedirectToAction(nameof(LoginController.Index), "Login");
+            return RedirectToAction(nameof(Login));
         }
 
         [HttpPost]

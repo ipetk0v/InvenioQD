@@ -1,7 +1,55 @@
-﻿@{
+﻿@model IEnumerable<AllCustomerModel>
+
+@{
     ViewData["Title"] = "Order";
 }
 
 <h2>@ViewData["Title"]</h2>
 
-<a href="/order/create" class="btn btn-primary">Add Order</a>
+@foreach (var customer in Model)
+{
+    <div class="col-md-4">
+        <!-- Widget: user widget style 1 -->
+        <div class="box box-widget widget-user">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-aqua-active">
+                <h3 class="widget-user-username">@customer.FullName</h3>
+                <h5 class="widget-user-desc">Customer</h5>
+                
+            </div>
+            <div class="widget-user-image">
+                <img class="img-circle" src="https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-512.png" alt="User Avatar">
+            </div>
+            <div class="box-footer">
+                <div class="row">
+                    <div class="col-sm-4 border-right">
+                        <div class="description-block">
+                            <h5 class="description-header">3,200</h5>
+                            <span class="description-text">Active orders</span>
+                        </div>
+                        <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-4 border-right">
+                        <div class="description-block">
+                            <h5 class="description-header">13,000</h5>
+                            <span class="description-text">Close orders</span>
+                        </div>
+                        <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-4">
+                        <div class="description-block">
+                            <a href="/order/allorders/@customer.Id" class="btn btn-success">All Orders</a>
+                        </div>
+                        <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+        </div>
+        <!-- /.widget-user -->
+    </div>
+}
+

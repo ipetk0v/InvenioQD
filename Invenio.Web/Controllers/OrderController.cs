@@ -12,16 +12,18 @@ namespace Invenio.Web.Controllers
     {
         private readonly IOrders orders;
         private readonly UserManager<User> user;
+        private readonly IUsers users;
 
-        public OrderController(IOrders orders, UserManager<User> user)
+        public OrderController(IOrders orders, UserManager<User> user, IUsers users)
         {
             this.orders = orders;
             this.user = user;
+            this.users = users;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(users.AllCustomer());
         }
 
         public IActionResult Create()
@@ -36,12 +38,15 @@ namespace Invenio.Web.Controllers
             }
 
             this.orders.Create(
-                model.Name, 
-                model.CountToFinishOrder, 
-                model.OderNumber, 
-                model.Customer);
+                model.Name,
+                model.CountToFinishOrder,
+                model.OderNumber,
+                "27b23270-dd09-4dcd-bd09-210c6410d2ca");
 
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult AllOrders(string id)
+            => this.View(orders.OrderById(id));
     }
 }

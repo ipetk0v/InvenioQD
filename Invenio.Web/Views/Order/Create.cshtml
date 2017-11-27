@@ -1,9 +1,4 @@
-﻿
-@{
-    ViewData["Title"] = "Create";
-}
-
-@model OrderViewModel
+﻿@model OrderViewModel
 
 @{
     ViewData["Title"] = "Order Create";
@@ -31,11 +26,6 @@
                 <label asp-for="CountToFinishOrder"></label>
                 <input asp-for="CountToFinishOrder" class="form-control" />
                 <span asp-validation-for="CountToFinishOrder" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Customer"></label>
-                <input asp-for="Customer" class="form-control" />
-                <span asp-validation-for="Customer" class="text-danger"></span>
             </div>
             <button type="submit" class="btn btn-default">Register</button>
         </form>

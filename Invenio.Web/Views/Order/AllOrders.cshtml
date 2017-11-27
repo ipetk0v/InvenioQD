@@ -1,0 +1,40 @@
+﻿@model IEnumerable<CustomerOrderModel>
+@{
+    ViewData["Title"] = "All Orders";
+}
+
+<div class="row">
+    <div class="col-md-10" style="padding-left: 25px;">
+        <h2>All Orders</h2>
+    </div>
+    <div class="col-md-2" style="padding-top: 25px;padding-left: 25px;">
+        <a href="/order/create" class="btn btn-success">Add new order</a>
+    </div>
+</div>
+
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Order Number</th>
+            <th>Start date</th>
+            <th>Status</th>
+            <th>Order count</th>
+            <th>Report</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.OderNumber</td>
+                <td>@item.StartOrder</td>
+                <td>@(item.Status  ? "Finish" : "In progress")</td>
+                <td>@item.CountToFinishOrder</td>
+                <td><a href="/order/report" class="btn btn-warning">Report</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
