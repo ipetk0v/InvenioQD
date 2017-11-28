@@ -3,7 +3,9 @@
 namespace Invenio.Service.Models
 {
     public class CustomerOrderModel
-    {
+    {         
+        public string OrderId { get; set; }
+
         public string CustomerUserId { get; set; }
 
         public string Name { get; set; }

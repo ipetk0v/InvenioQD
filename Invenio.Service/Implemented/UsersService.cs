@@ -6,11 +6,11 @@ using System.Linq;
 
 namespace Invenio.Service.Implemented
 {
-    public class Users : IUsers
+    public class UsersService : IUsersService
     {
         private readonly InvenioDbContext db;
 
-        public Users(InvenioDbContext db)
+        public UsersService(InvenioDbContext db)
         {
             this.db = db;
         }

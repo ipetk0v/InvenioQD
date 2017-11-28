@@ -37,8 +37,9 @@ namespace Invenio.Web
                 .AddEntityFrameworkStores<InvenioDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddTransient<IUsers, Users>();
-            services.AddTransient<IOrders, Orders>();
+            services.AddTransient<IUsersService, UsersService>();
+            services.AddTransient<IOrdersService, OrdersService>();
+            services.AddTransient<IReportsService, ReportsService>();
 
             services.AddMvc();
         }

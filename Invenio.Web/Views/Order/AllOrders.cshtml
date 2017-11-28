@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<CustomerOrderModel>
+
 @{
     ViewData["Title"] = "All Orders";
 }
@@ -33,8 +34,34 @@
                 <td>@item.StartOrder</td>
                 <td>@(item.Status  ? "Finish" : "In progress")</td>
                 <td>@item.CountToFinishOrder</td>
-                <td><a href="/order/report" class="btn btn-warning">Report</a></td>
+                <td>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">Create</button>
+                    <a href="../../Report/ReportById/@item.OrderId" class="btn btn-warning">View</a>
+                </td>
             </tr>
         }
     </tbody>
 </table>
+
+<form method="post" action="../../Report/Create">
+    <div class="modal modal-success fade" id="modal-success" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">Success Modal</h4>
+                </div>
+                <div name="textReport" class="modal-body">
+                    <textarea name="textReport" rows="20" cols="20"></textarea>
+                    <p>One fine body…</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                    <button asp-route-reportText="text report test" asp-route-orderId="@Model.First().OrderId" type="submit" class="btn btn-outline">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

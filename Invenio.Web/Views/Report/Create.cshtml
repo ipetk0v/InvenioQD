@@ -1,0 +1,41 @@
+﻿@model ReportModel
+
+@{
+    ViewData["Title"] = "Report Create";
+
+    var result = ViewData["OrderId"].ToString();
+    var orderId = result.Split('/').ToList().Last();
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h1>@orderId</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+            <h4>Create a new account.</h4>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ReportText"></label>
+                <textarea asp-for="ReportText" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                <span asp-validation-for="ReportText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OderId"></label>
+                <input type="text" asp-for="OderId" value="@orderId" />
+                <span asp-validation-for="OderId" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-default">Register</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+
+
+
+

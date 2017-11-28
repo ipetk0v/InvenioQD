@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Invenio.Service.Interfaces
 {
-    public interface IUsers
+    public interface IUsersService
     {
         IEnumerable<AllEmployeeModel> AllEmployee();
 

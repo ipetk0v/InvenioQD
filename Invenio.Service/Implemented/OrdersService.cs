@@ -8,11 +8,11 @@ using System.Linq;
 
 namespace Invenio.Service.Implemented
 {
-    public class Orders : IOrders
+    public class OrdersService : IOrdersService
     {
         private readonly InvenioDbContext db;
 
-        public Orders(InvenioDbContext db)
+        public OrdersService(InvenioDbContext db)
         {
             this.db = db;
         }
@@ -40,11 +40,13 @@ namespace Invenio.Service.Implemented
             .Select(o => new CustomerOrderModel
             {
                 Name = o.Name,
+                OrderId = o.Id,
                 StartOrder = o.StartOrder,
                 CountToFinishOrder = o.CountToFinishOrder,
                 FinishOrder = o.FinishOrder,
                 OderNumber = o.OderNumber,
-                Status = o.Status
+                Status = o.Status,
+                CustomerUserId = o.CustomerUserId
             }).ToList();
     }
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Invenio.Service.Interfaces
 {
-    public interface IOrders
+    public interface IOrdersService
     {
         void Create(string name, int CountToFinishOrder, string OderNumber, string customerId);
 

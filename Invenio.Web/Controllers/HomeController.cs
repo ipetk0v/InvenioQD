@@ -10,9 +10,9 @@ namespace Invenio.Web.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        private readonly IUsers users;
+        private readonly IUsersService users;
 
-        public HomeController(IUsers users)
+        public HomeController(IUsersService users)
         {
             this.users = users;
         }

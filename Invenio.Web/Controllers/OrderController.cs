@@ -10,11 +10,11 @@ namespace Invenio.Web.Controllers
     [Authorize]
     public class OrderController : Controller
     {
-        private readonly IOrders orders;
+        private readonly IOrdersService orders;
         private readonly UserManager<User> user;
-        private readonly IUsers users;
+        private readonly IUsersService users;
 
-        public OrderController(IOrders orders, UserManager<User> user, IUsers users)
+        public OrderController(IOrdersService orders, UserManager<User> user, IUsersService users)
         {
             this.orders = orders;
             this.user = user;
