@@ -31,6 +31,7 @@ namespace Invenio.Service.Implemented
                      Region = u.Region,
                      UserName = u.UserName,
                      Position = u.Position
+                     
                  }).ToList();
         }
 

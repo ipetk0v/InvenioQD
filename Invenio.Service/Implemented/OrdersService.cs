@@ -26,7 +26,7 @@ namespace Invenio.Service.Implemented
                 Status = false,
                 OderNumber = OderNumber,
                 StartOrder = DateTime.UtcNow,
-                CustomerUserId = customerId
+                CustomerUserId = customerId                
             };
 
             this.db.Order.Add(order);

@@ -4,6 +4,7 @@ using Invenio.Web.Models.OrderViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace Invenio.Web.Controllers
 {
@@ -27,10 +28,13 @@ namespace Invenio.Web.Controllers
         }
 
         public IActionResult Create()
-            => this.View();
+        {
+            ViewBag.CustomerList = users.AllCustomer().Select(c => c.FullName).ToList();
+            return this.View();
+        }
 
         [HttpPost]
-        public IActionResult Create(OrderViewModel model)
+        public IActionResult Create(OrderViewModel model, string customerId)
         {
             if (!ModelState.IsValid)
             {
@@ -38,10 +42,11 @@ namespace Invenio.Web.Controllers
             }
 
             this.orders.Create(
-                model.Name,
+                model.OrderName,
                 model.CountToFinishOrder,
                 model.OderNumber,
-                "27b23270-dd09-4dcd-bd09-210c6410d2ca");
+                // Добавяне на валидно ID ,а не име на CustomerName
+                model.CustomerName);
 
             return RedirectToAction(nameof(Index));
         }

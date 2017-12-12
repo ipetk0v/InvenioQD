@@ -1,15 +1,10 @@
-﻿@model ReportModel
+﻿@model ReportViewModel
 
 @{
     ViewData["Title"] = "Report Create";
-
-    var result = ViewData["OrderId"].ToString();
-    var orderId = result.Split('/').ToList().Last();
 }
 
 <h2>@ViewData["Title"]</h2>
-
-<h1>@orderId</h1>
 
 <div class="row">
     <div class="col-md-4">
@@ -18,14 +13,14 @@
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="ReportText"></label>
-                <textarea asp-for="ReportText" class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                <span asp-validation-for="ReportText" class="text-danger"></span>
+                <label asp-for="TextReport"></label>
+                <textarea asp-for="TextReport" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                <span asp-validation-for="TextReport" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="OderId"></label>
-                <input type="text" asp-for="OderId" value="@orderId" />
-                <span asp-validation-for="OderId" class="text-danger"></span>
+                <label asp-for="OrderId"></label>
+                <input asp-for="OrderId" value="@ViewBag.OrderId" class="form-control"></input>
+                <span asp-validation-for="OrderId" class="text-danger"></span>
             </div>
             <button type="submit" class="btn btn-default">Register</button>
         </form>

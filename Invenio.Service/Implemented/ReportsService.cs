@@ -16,6 +16,9 @@ namespace Invenio.Service.Implemented
             this.db = db;
         }
 
+        public bool CheckForOrderId(string orderId)
+         => db.Report.Select(r => r.OrderId == orderId).FirstOrDefault();
+
         public void Create(string ReportText, string orderId)
         {
             this.db.Add(new Report

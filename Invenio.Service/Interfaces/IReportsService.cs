@@ -8,5 +8,7 @@ namespace Invenio.Service.Interfaces
         void Create(string ReportText, string orderId);
 
         ReportModel ReportById(string id);
+
+        bool CheckForOrderId(string orderId);
     }
 }

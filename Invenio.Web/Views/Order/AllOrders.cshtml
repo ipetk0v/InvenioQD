@@ -9,7 +9,7 @@
         <h2>All Orders</h2>
     </div>
     <div class="col-md-2" style="padding-top: 25px;padding-left: 25px;">
-        <a href="/order/create" class="btn btn-success">Add new order</a>
+        <a href="/order/create/" class="btn btn-success">Add new order</a>
     </div>
 </div>
 
@@ -35,33 +35,10 @@
                 <td>@(item.Status  ? "Finish" : "In progress")</td>
                 <td>@item.CountToFinishOrder</td>
                 <td>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">Create</button>
+                    <a href="../../Report/Create?orderId=@item.OrderId" class="btn btn-primary">Create</a>
                     <a href="../../Report/ReportById/@item.OrderId" class="btn btn-warning">View</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
-
-<form method="post" action="../../Report/Create">
-    <div class="modal modal-success fade" id="modal-success" style="display: none;">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                    <h4 class="modal-title">Success Modal</h4>
-                </div>
-                <div name="textReport" class="modal-body">
-                    <textarea name="textReport" rows="20" cols="20"></textarea>
-                    <p>One fine body…</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                    <button asp-route-reportText="text report test" asp-route-orderId="@Model.First().OrderId" type="submit" class="btn btn-outline">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</form>

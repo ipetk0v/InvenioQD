@@ -1,4 +1,5 @@
 ﻿using Invenio.Service.Interfaces;
+using Invenio.Web.Models.ReportViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Invenio.Web.Controllers
@@ -12,23 +13,28 @@ namespace Invenio.Web.Controllers
             this.reports = reports;
         }
 
-        public IActionResult ReportById(string id)
+        public IActionResult Create(string orderId)
         {
-            return this.View(reports.ReportById(id));
-        }
-
-        public IActionResult Create()
-        {
+            ViewBag.OrderId = orderId;
             return this.View();
         }
 
 
         [HttpPost]
-        public IActionResult Create(string reportText, string orderId)
+        public IActionResult Create(ReportViewModel model)
         {
-            this.reports.Create(reportText, orderId);
-
+            this.reports.Create(model.TextReport, model.OrderId);
             return RedirectToAction(nameof(Create));
+        }
+
+        public IActionResult ReportById(string id)
+        {
+            if (reports.CheckForOrderId(id) == false)
+            {
+               return RedirectToAction("Index", "Order");
+            }
+
+            return this.View(reports.ReportById(id));
         }
     }
 }

@@ -6,6 +6,7 @@ using Invenio.Service.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -41,7 +42,11 @@ namespace Invenio.Web
             services.AddTransient<IOrdersService, OrdersService>();
             services.AddTransient<IReportsService, ReportsService>();
 
-            services.AddMvc();
+            services.AddMvc(options =>
+            {
+                options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
+            });
+
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
