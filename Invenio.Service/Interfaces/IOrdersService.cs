@@ -6,7 +6,7 @@ namespace Invenio.Service.Interfaces
 {
     public interface IOrdersService
     {
-        void Create(string name, int CountToFinishOrder, string OderNumber, string customerId);
+        void Create(string name, int CountToFinishOrder, string OderNumber, string customerUser);
 
         IEnumerable<CustomerOrderModel> OrderById(string id);
     }

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using System.Security.Claims;
 
 namespace Invenio.Web.Controllers
 {
@@ -24,6 +25,16 @@ namespace Invenio.Web.Controllers
 
         public IActionResult Index()
         {
+            var roles = ((ClaimsIdentity)User.Identity).Claims
+                .Where(c => c.Type == ClaimTypes.Role)
+                .Select(c => c.Value).FirstOrDefault();
+
+            if (roles == "Customer")
+            {
+                var customerId = ((ClaimsIdentity)User.Identity).Claims.First().Value;
+                return RedirectToAction("AllOrders", new { id = customerId });
+            }
+
             return View(users.AllCustomer());
         }
 
@@ -45,7 +56,6 @@ namespace Invenio.Web.Controllers
                 model.OrderName,
                 model.CountToFinishOrder,
                 model.OderNumber,
-                // Добавяне на валидно ID ,а не име на CustomerName
                 model.CustomerName);
 
             return RedirectToAction(nameof(Index));

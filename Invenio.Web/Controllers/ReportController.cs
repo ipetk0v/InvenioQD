@@ -1,9 +1,11 @@
 ﻿using Invenio.Service.Interfaces;
 using Invenio.Web.Models.ReportViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Invenio.Web.Controllers
 {
+    [Authorize]
     public class ReportController : Controller
     { 
         private readonly IReportsService reports;
@@ -24,14 +26,14 @@ namespace Invenio.Web.Controllers
         public IActionResult Create(ReportViewModel model)
         {
             this.reports.Create(model.TextReport, model.OrderId);
-            return RedirectToAction(nameof(Create));
+            return RedirectToAction(nameof(ReportById));
         }
 
         public IActionResult ReportById(string id)
         {
-            if (reports.CheckForOrderId(id) == false)
+            if (!reports.CheckForOrderId(id))
             {
-               return RedirectToAction("Index", "Order");
+                return RedirectToAction("Index", "Order");
             }
 
             return this.View(reports.ReportById(id));

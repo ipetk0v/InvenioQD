@@ -17,10 +17,12 @@ namespace Invenio.Service.Implemented
         }
 
         public bool CheckForOrderId(string orderId)
-         => db.Report.Select(r => r.OrderId == orderId).FirstOrDefault();
+         => this.db.Report.Any(x => x.OrderId == orderId);
 
         public void Create(string ReportText, string orderId)
         {
+            this.db.Report.Where(o => o.OrderId == orderId).ToList().Clear();
+
             this.db.Add(new Report
             {
                 ReportText = ReportText,

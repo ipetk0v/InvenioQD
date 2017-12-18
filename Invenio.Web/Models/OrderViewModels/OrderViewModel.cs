@@ -10,16 +10,20 @@ namespace Invenio.Web.Models.OrderViewModels
         public string CustomerName { get; set; }
 
         [Required]
+        [Display(Name = "Order name")]
         public string OrderName { get; set; }
 
         [Required]
+        [Display(Name = "Order number")]
         public string OderNumber { get; set; }
 
         [Required]
         [Range(1,int.MaxValue)]
+        [Display(Name = "Count to finish order")]
         public int CountToFinishOrder { get; set; }
 
         [Required]
+        [Display(Name = "Start date")]
         public DateTime StartOrder { get; set; }
     }
 }

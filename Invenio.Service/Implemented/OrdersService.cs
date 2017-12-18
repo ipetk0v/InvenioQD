@@ -17,8 +17,10 @@ namespace Invenio.Service.Implemented
             this.db = db;
         }
 
-        public void Create(string name, int CountToFinishOrder, string OderNumber, string customerId)
+        public void Create(string name, int CountToFinishOrder, string OderNumber, string customerUser)
         {
+            var customerId = this.db.CustomerUser.Where(n => n.FullName == customerUser).Select(x => x.Id).FirstOrDefault();
+
             var order = new Order
             {
                 Name = name,

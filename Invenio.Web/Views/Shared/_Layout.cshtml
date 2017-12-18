@@ -108,7 +108,7 @@
                 <!-- /.search form -->
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
-                    <li class="header">MAIN MENU</li>
+                    <li class="header">Main Menu</li>
                     <li><a href="/home"><i class="fa fa-home"></i> <span>Home</span></a></li>   
                     <li><a href="http://invenio-bg.com" target="_blank"><i class="fa fa-info"></i> <span>About Us</span></a></li>
                     @if (User.IsInRole("Customer"))
@@ -127,10 +127,20 @@
                     @if (!User.IsInRole("Customer") && !User.IsInRole("TeamLeader"))
                     {
                         <li class="header">Admin</li>
-                        <li><a href="/admin"><i class="fa fa-lock"></i> <span>Admin Panel</span></a></li>
-                        <li><a href="/account/registerEmployee"><i class="fa fa-lock"></i> <span>Add Employee</span></a></li>
-                        <li><a href="/account/registerCustomer"><i class="fa fa-lock"></i> <span>Add Customer</span></a></li>
-                        <li><a href="/order/create"><i class="fa fa-lock"></i> <span>Add Order</span></a></li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-lock"></i>
+                                <span>Admin Panel</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu" style="display: none;">
+                                <li><a href="/account/registerEmployee"><i class="fa fa-lock"></i> <span>Add Employee</span></a></li>
+                                <li><a href="/account/registerCustomer"><i class="fa fa-lock"></i> <span>Add Customer</span></a></li>
+                                <li><a href="/order/create"><i class="fa fa-lock"></i> <span>Add Order</span></a></li>
+                            </ul>
+                        </li>
                     }
 
                 </ul>

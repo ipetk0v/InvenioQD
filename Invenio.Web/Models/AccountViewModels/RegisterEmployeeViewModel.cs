@@ -6,11 +6,13 @@ namespace Invenio.Web.Models.AccountViewModels
     public class RegisterEmployeeViewModel
     {
         [Required]
+        [Display(Name = "User name")]
         public string UserName { get; set; }
 
         [Required]
         [MinLength(2)]
         [MaxLength(50)]
+        [Display(Name = "Full name")]
         public string FullName { get; set; }
 
         [Required]

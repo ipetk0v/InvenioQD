@@ -30,8 +30,8 @@ namespace Invenio.Service.Implemented
                      PhoneNumber = u.PhoneNumber,
                      Region = u.Region,
                      UserName = u.UserName,
-                     Position = u.Position
-                     
+                     Position = u.Position,
+                     orderCount = u.Orders.Count
                  }).ToList();
         }
 

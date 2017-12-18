@@ -21,5 +21,7 @@ namespace Invenio.Service.Models
         public string Region { get; set; }
 
         public PositionType Position { get; set; }
+
+        public int orderCount { get; set; }
     }
 }

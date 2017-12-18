@@ -5,6 +5,7 @@ namespace Invenio.Web.Models.AccountViewModels
     public class LoginViewModel
     {
         [Required]
+        [Display(Name = "Username")]
         public string UserName { get; set; }
 
         [Required]
