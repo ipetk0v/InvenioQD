@@ -38,7 +38,8 @@ namespace Invenio.Service.Implemented
                 .Where(u => u.OrderId == id)
                 .Select(r => new ReportModel
                 {
-                    ReportText = r.ReportText
+                    ReportText = r.ReportText,
+                    OderId = r.OrderId
                 })
                 .FirstOrDefault();
         }
