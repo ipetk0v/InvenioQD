@@ -10,12 +10,14 @@ namespace Invenio.Web.Models.OrderViewModels
         public string CustomerName { get; set; }
 
         [Required]
+        [MaxLength(50)]
         [Display(Name = "Order name")]
         public string OrderName { get; set; }
 
         [Required]
+        [MaxLength(50)]
         [Display(Name = "Order number")]
-        public string OderNumber { get; set; }
+        public string OrderNumber { get; set; }
 
         [Required]
         [Range(1,int.MaxValue)]

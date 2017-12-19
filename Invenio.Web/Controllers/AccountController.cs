@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 
 namespace Invenio.Web.Controllers
 {
-    [Authorize]
     [Route("[controller]/[action]")]
     public class AccountController : Controller
     {
@@ -199,7 +198,6 @@ namespace Invenio.Web.Controllers
         [AllowAnonymous]
         public IActionResult RegisterEmployee(string returnUrl = null)
         {
-            //ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
 
@@ -207,7 +205,6 @@ namespace Invenio.Web.Controllers
         [AllowAnonymous]
         public IActionResult RegisterCustomer(string returnUrl = null)
         {
-            //ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
 
@@ -254,8 +251,7 @@ namespace Invenio.Web.Controllers
 
                 AddErrors(result);
             }
-
-            // If we got this far, something failed, redisplay form
+            
             return View(model);
         }
 
@@ -305,8 +301,7 @@ namespace Invenio.Web.Controllers
 
                 AddErrors(result);
             }
-
-            // If we got this far, something failed, redisplay form
+            
             return View(model);
         }
 

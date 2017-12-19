@@ -9,7 +9,7 @@
         <h2>All Orders</h2>
     </div>
     <div class="col-md-2" style="padding-top: 25px;padding-left: 25px;">
-        @if (!User.IsInRole("Customer"))
+        @if (!User.IsInRole("Customer") && !User.IsInRole("TeamLeader"))
         {
             <a href="/order/create/" class="btn btn-success">Add new order</a>
         }
@@ -18,7 +18,7 @@
 
 <hr />
 
-<table class="table table-bordered table-hover">
+<table class="table table-bordered table-hover" style="margin-bottom: 0px;">
     <thead>
         <tr>
             <th>Name</th>
@@ -36,7 +36,7 @@
         {
             <tr>
                 <td>@item.Name</td>
-                <td>@item.OderNumber</td>
+                <td>@item.OrderNumber</td>
                 <td>@item.StartOrder</td>
                 <td>@(item.Status ? "Finish" : "In progress")</td>
                 <td>@item.CountToFinishOrder</td>

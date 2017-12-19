@@ -19,8 +19,11 @@
                         <img class="img-circle" src="https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-512.png" alt="User Avatar">
                     </div>
                     <h3 class="widget-user-username">@user.FullName</h3>
-                    <h5 class="widget-user-desc">@user.Position</h5>
+                    <h5 class="widget-user-desc">@(PositionEnumDisplay.GetEnumAsAString(user.Position))
+                    </h5>
+
                 </div>
+
                 <div class="box-footer no-padding">
                     <ul class="nav nav-stacked">
                         <li><a href="mailto:@user.Email">Email <span class="pull-right badge bg-blue">@user.Email</span></a></li>

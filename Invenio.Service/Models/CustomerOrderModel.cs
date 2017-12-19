@@ -11,7 +11,7 @@ namespace Invenio.Service.Models
 
         public string Name { get; set; }
 
-        public string OderNumber { get; set; }
+        public string OrderNumber { get; set; }
 
         public int CountToFinishOrder { get; set; }
 

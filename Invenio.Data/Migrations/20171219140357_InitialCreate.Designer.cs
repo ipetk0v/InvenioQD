@@ -13,8 +13,8 @@ using System;
 namespace Invenio.Data.Migrations
 {
     [DbContext(typeof(InvenioDbContext))]
-    [Migration("20171124113339_OrderAndReportTable")]
-    partial class OrderAndReportTable
+    [Migration("20171219140357_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,9 +34,13 @@ namespace Invenio.Data.Migrations
 
                     b.Property<DateTime>("FinishOrder");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50);
 
-                    b.Property<string>("OderNumber");
+                    b.Property<string>("OrderNumber")
+                        .IsRequired()
+                        .HasMaxLength(50);
 
                     b.Property<string>("ReportId");
 
@@ -62,7 +66,9 @@ namespace Invenio.Data.Migrations
 
                     b.Property<string>("OrderId");
 
-                    b.Property<string>("ReportText");
+                    b.Property<string>("ReportText")
+                        .IsRequired()
+                        .HasMaxLength(5000);
 
                     b.HasKey("Id");
 

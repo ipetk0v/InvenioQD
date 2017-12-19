@@ -34,7 +34,7 @@ namespace Invenio.Test.Service
 
             Assert.Equal(expectName, result.Name);
             Assert.Equal(expectCountToFinishOrder, result.CountToFinishOrder);
-            Assert.Equal(expectOderNumber, result.OderNumber);
+            Assert.Equal(expectOderNumber, result.OrderNumber);
         }
 
         [Fact]

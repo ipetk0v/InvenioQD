@@ -26,7 +26,7 @@ namespace Invenio.Service.Implemented
                 Name = name,
                 CountToFinishOrder = CountToFinishOrder,
                 Status = false,
-                OderNumber = OderNumber,
+                OrderNumber = OderNumber,
                 StartOrder = DateTime.UtcNow,
                 CustomerUserId = customerId                
             };
@@ -46,7 +46,7 @@ namespace Invenio.Service.Implemented
                 StartOrder = o.StartOrder,
                 CountToFinishOrder = o.CountToFinishOrder,
                 FinishOrder = o.FinishOrder,
-                OderNumber = o.OderNumber,
+                OrderNumber = o.OrderNumber,
                 Status = o.Status,
                 CustomerUserId = o.CustomerUserId
             }).ToList();

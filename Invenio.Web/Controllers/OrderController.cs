@@ -55,7 +55,7 @@ namespace Invenio.Web.Controllers
             this.orders.Create(
                 model.OrderName,
                 model.CountToFinishOrder,
-                model.OderNumber,
+                model.OrderNumber,
                 model.CustomerName);
 
             return RedirectToAction(nameof(Index));
