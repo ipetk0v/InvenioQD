@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace Invenio.Web.Controllers
 {
+    [Authorize]
     [Route("[controller]/[action]")]
     public class AccountController : Controller
     {

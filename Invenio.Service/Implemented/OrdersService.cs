@@ -39,6 +39,7 @@ namespace Invenio.Service.Implemented
          => this.db
             .Order
             .Where(u => u.CustomerUserId == id)
+            .OrderByDescending(d => d.StartOrder)
             .Select(o => new CustomerOrderModel
             {
                 Name = o.Name,
@@ -48,7 +49,8 @@ namespace Invenio.Service.Implemented
                 FinishOrder = o.FinishOrder,
                 OrderNumber = o.OrderNumber,
                 Status = o.Status,
-                CustomerUserId = o.CustomerUserId
+                CustomerUserId = o.CustomerUserId,
+                CustomerUserName = o.CustomerUser.FullName
             }).ToList();
     }
 }

@@ -1,4 +1,4 @@
-﻿@inject UserManager<User> UserManager
+﻿ @inject UserManager<User> UserManager;
 
 <head>
     <meta charset="utf-8">
@@ -52,15 +52,15 @@
                         <li class="dropdown user user-menu" style="margin-right: 20px;">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="https://app.nimia.com/static/img/default_profile.png" class="user-image" alt="User Image">
-                                <span class="hidden-xs">@UserManager.GetUserName(User)</span>
+                                <span class="hidden-xs">@UserManager.GetUserAsync(User).Result.FullName</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
                                     <img src="https://app.nimia.com/static/img/default_profile.png" class="img-circle" alt="User Image">
                                     <p>
-                                        @UserManager.GetUserName(User) - Web Developer
-                                        <small>Member since Nov. 2012</small>
+                                        @UserManager.GetUserAsync(User).Result.FullName - 
+                                        @PositionEnumDisplay.GetEnumAsAString(User.Identities.First().Claims.Select(x => x.Value).Skip(3).First())
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->
@@ -90,7 +90,7 @@
                         <img src="https://app.nimia.com/static/img/default_profile.png" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
-                        <p>@UserManager.GetUserName(User)</p>
+                        <p>@UserManager.GetUserAsync(User).Result.FullName</p>
                         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                     </div>
                 </div>

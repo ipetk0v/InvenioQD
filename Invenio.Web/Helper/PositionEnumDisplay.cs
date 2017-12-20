@@ -4,17 +4,17 @@ namespace Invenio.Web.Helper
 {
     public static class PositionEnumDisplay
     {
-        public static string GetEnumAsAString(PositionType position)
+        public static string GetEnumAsAString(string position)
         {
             switch (position)
             {
-                case PositionType.GeneralManager:
+                case "GeneralManager":
                     return "General Manager";
-                case PositionType.RegionalManager:
+                case "RegionalManager":
                     return "Regional Manager";
-                case PositionType.ProductionCordinator:
+                case "ProductionCordinator":
                     return "Production Cordinator";
-                case PositionType.TeamLeader:
+                case "TeamLeader":
                     return "Team Leader";
                 default:
                     return "Customer";

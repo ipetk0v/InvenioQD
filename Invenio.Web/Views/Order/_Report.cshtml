@@ -15,7 +15,7 @@
 
 
 <table class="table table-bordered table-hover">
-    <thead>
+    <thead class="thead-inverse">
         <tr>
             <th>Name</th>
             <th>Order Number</th>
@@ -30,7 +30,7 @@
         {
             <tr>
                 <td>@item.Name</td>
-                <td>@item.OderNumber</td>
+                <td>@item.OrderNumber</td>
                 <td>@item.StartOrder</td>
                 <td>@(item.Status ? "Finish" : "In progress")</td>
                 <td>@item.CountToFinishOrder</td>

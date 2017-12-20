@@ -4,17 +4,22 @@
     ViewData["Title"] = "Report";
 }
 <br />
-<div class="col-md-6">
-    <div class="box box-solid">
-        <div class="box-header with-border">
-            <i class="fa fa-area-chart"></i>
+<div class="row">
+    <div class="col-md-2 col-sm-1"></div>
+    <div class="col-md-8 col-sm-10">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <i class="fa fa-area-chart"></i>
 
-            <h3 class="box-title">Report</h3>
-        </div>
-        <div class="box-body" style="min-height: 200px;">
+                <h3 class="box-title">Report</h3>
+            </div>
+            <div class="box-body" style="min-height: 200px;">
                 @Model.ReportText
+            </div>
         </div>
-    </div>
 
-    <a class="btn btn-default" href="/order">Back</a>
+        <a class="btn btn-default" href="/order">Back</a>
+    </div>
+    <div class="col-md-2 col-sm-1"></div>
 </div>
+

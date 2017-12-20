@@ -35,7 +35,7 @@ namespace Invenio.Web.Controllers
                 return RedirectToAction("AllOrders", new { id = customerId });
             }
 
-            return View(users.AllCustomer());
+                return View(users.AllCustomer());
         }
 
         public IActionResult Create()
