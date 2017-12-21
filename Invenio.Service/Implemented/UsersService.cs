@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using Invenio.Data;
+using Invenio.Data.Models;
 using Invenio.Service.Interfaces;
 using Invenio.Service.Models;
-using Invenio.Data;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Invenio.Service.Implemented
@@ -19,7 +20,7 @@ namespace Invenio.Service.Implemented
         {
             return this.db
                  .CustomerUser
-                 .Where(u => u.Position == Data.Models.PositionType.Customer)
+                 .Where(u => u.Position == PositionType.Customer)
                  .Select(u => new AllCustomerModel
                  {
                      Country = u.Country,
@@ -39,7 +40,7 @@ namespace Invenio.Service.Implemented
         {
             return this.db
             .User
-            .Where(u => u.Position != Data.Models.PositionType.Customer)
+            .Where(u => u.Position != PositionType.Customer)
             .Select(u => new AllEmployeeModel
             {
                 Email = u.Email,
