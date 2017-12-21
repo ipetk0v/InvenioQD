@@ -3,6 +3,7 @@ using Invenio.Data;
 using Invenio.Data.Models;
 using Invenio.Service.Implemented;
 using Invenio.Service.Interfaces;
+using Invenio.Web.Helper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -22,7 +23,6 @@ namespace Invenio.Web
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<InvenioDbContext>(options =>
@@ -34,6 +34,7 @@ namespace Invenio.Web
                 options.Password.RequireLowercase = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequiredLength = DataAnnotationsAttributesHelper.UserPasswordMinLength;
             })
                 .AddEntityFrameworkStores<InvenioDbContext>()
                 .AddDefaultTokenProviders();

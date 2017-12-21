@@ -1,11 +1,9 @@
-﻿using CameraBazaar.Web.Infrastructures.Constants;
-using Invenio.Data;
+﻿using Invenio.Data;
 using Invenio.Data.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using System.Threading.Tasks;
 
 namespace CameraBazaar.Web.Infrastructures.Extensions
 {
@@ -19,40 +17,6 @@ namespace CameraBazaar.Web.Infrastructures.Extensions
 
                 var userManager = serviceScope.ServiceProvider.GetService<UserManager<User>>();
                 var roleManager = serviceScope.ServiceProvider.GetService<RoleManager<IdentityRole>>();
-
-                //Task.Run(async () =>
-                //{
-                //    var adminName = GlobalConstants.GeneralManager;
-
-                //    var roleExist = await roleManager.RoleExistsAsync(adminName);
-
-                //    if (!roleExist)
-                //    {
-                //        await roleManager.CreateAsync(new IdentityRole
-                //        {
-                //            Name = adminName
-
-                //        });
-                //    }
-
-                //    var adminEmail = "admin@abv.bg";
-                //    var adminUserExist = await userManager.FindByEmailAsync(adminEmail);
-
-                //    if (adminUserExist == null)
-                //    {
-                //        var adminUser = new User
-                //        {
-                //            Email = adminEmail,
-                //            FullName = "Admin"
-                //        };
-
-                //        await userManager.CreateAsync(adminUser, "admin123");
-
-                //        await userManager.AddToRoleAsync(adminUser, adminName);
-                //    }
-
-                //}).GetAwaiter()
-                //.GetResult();
             }
 
             return app;

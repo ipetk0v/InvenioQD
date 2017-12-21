@@ -1,4 +1,5 @@
 ﻿using Invenio.Service.Models;
+using Invenio.Web.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,12 +11,12 @@ namespace Invenio.Web.Models.OrderViewModels
         public string CustomerName { get; set; }
 
         [Required]
-        [MaxLength(50)]
+        [MaxLength(DataAnnotationsAttributesHelper.OrderNameMaxLength)]
         [Display(Name = "Order name")]
         public string OrderName { get; set; }
 
         [Required]
-        [MaxLength(50)]
+        [MaxLength(DataAnnotationsAttributesHelper.OrderNumberMaxLength)]
         [Display(Name = "Order number")]
         public string OrderNumber { get; set; }
 

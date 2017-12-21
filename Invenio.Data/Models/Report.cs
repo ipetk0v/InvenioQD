@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Invenio.Web.Helper;
+using System.ComponentModel.DataAnnotations;
 
 namespace Invenio.Data.Models
 {
@@ -7,8 +8,8 @@ namespace Invenio.Data.Models
         public string Id { get; set; }
 
         [Required]
-        [MinLength(10)]
-        [MaxLength(5000)]
+        [MinLength(DataAnnotationsAttributesHelper.ReportTextMinLength)]
+        [MaxLength(DataAnnotationsAttributesHelper.ReportTextMaxLength)]
         public string ReportText { get; set; }
 
         public string OrderId { get; set; }

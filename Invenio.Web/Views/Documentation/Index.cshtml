@@ -1,0 +1,58 @@
+﻿@{
+        ViewData["title"] = "documentation";
+}
+
+<div class="row">
+    <div class="col-md-10" style="padding-left: 25px;">
+        <h2>Invenio QD Documents</h2>
+    </div>
+    <div class="col-md-2" style="padding-top: 25px;padding-left: 25px;">
+        @if (User.IsInRole("GeneralManager") || User.IsInRole("RegionalManager"))
+        {
+        <a href="documentation/create">
+            <label class="btn btn-success btn-file">
+                Add File <input type="file" style="display: none;">
+            </label>
+        </a>
+        }
+    </div>
+</div>
+
+<hr />
+
+<div class="col-xs-12">
+    <div class="box">
+        <div class="box-header">
+        </div>
+        <div class="box-body">
+            <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                <div class="row"><div class="col-sm-6"></div><div class="col-sm-6"></div></div><div class="row">
+                    <div class="col-sm-12">
+                        <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                            <thead>
+                                <tr>
+                                    <th>File Name</th>
+                                    <th>Type</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>Ime na faila</th>
+                                    <th>Excel</th>
+                                    <th>
+                                        @if (User.IsInRole("GeneralManager") || User.IsInRole("RegionalManager"))
+        {
+                                        <a class="btn btn-danger">Delete</a>
+        }
+                                        <a class="btn btn-success">Download</a>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

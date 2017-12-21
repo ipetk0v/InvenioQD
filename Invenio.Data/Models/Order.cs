@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Invenio.Web.Helper;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Invenio.Data.Models
@@ -8,11 +9,11 @@ namespace Invenio.Data.Models
         public string Id { get; set; }
 
         [Required]
-        [MaxLength(50)]
+        [MaxLength(DataAnnotationsAttributesHelper.OrderNameMaxLength)]
         public string Name { get; set; }
 
         [Required]
-        [MaxLength(50)]
+        [MaxLength(DataAnnotationsAttributesHelper.OrderNumberMaxLength)]
         public string OrderNumber { get; set; }
 
         [Range(1,int.MaxValue)]

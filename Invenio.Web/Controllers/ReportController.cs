@@ -25,6 +25,11 @@ namespace Invenio.Web.Controllers
         [HttpPost]
         public IActionResult Create(ReportViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
             this.reports.Create(model.TextReport, model.OrderId);
             return RedirectToAction(nameof(ReportById));
         }

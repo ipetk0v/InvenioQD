@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Invenio.Web.Helper;
+using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
 namespace Invenio.Data.Models
@@ -6,10 +7,10 @@ namespace Invenio.Data.Models
     public class User : IdentityUser
     {
         [Required]
-        [MaxLength(100)]
+        [MaxLength(DataAnnotationsAttributesHelper.UserFullNameMaxLength)]
         public string FullName { get; set; }
 
-        [MaxLength(100)]
+        [MaxLength(DataAnnotationsAttributesHelper.UserRegionMaxLength)]
         public string Region { get; set; }
 
         [Required]

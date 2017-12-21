@@ -1,4 +1,5 @@
 ﻿using Invenio.Data.Models;
+using Invenio.Web.Helper;
 using System.ComponentModel.DataAnnotations;
 
 namespace Invenio.Web.Models.AccountViewModels
@@ -10,8 +11,8 @@ namespace Invenio.Web.Models.AccountViewModels
         public string UserName { get; set; }
 
         [Required]
-        [MinLength(2)]
-        [MaxLength(50)]
+        [MinLength(DataAnnotationsAttributesHelper.UserFullNameMinLength)]
+        [MaxLength(DataAnnotationsAttributesHelper.UserFullNameMaxLength)]
         [Display(Name = "Full Name")]
         public string FullName { get; set; }
 
@@ -21,7 +22,8 @@ namespace Invenio.Web.Models.AccountViewModels
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+        [StringLength(DataAnnotationsAttributesHelper.UserPasswordLength, 
+            ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = DataAnnotationsAttributesHelper.UserPasswordMinLength)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
@@ -35,15 +37,15 @@ namespace Invenio.Web.Models.AccountViewModels
         public PositionType Position { get; set; }
 
         [Required]
-        [MaxLength(100)]
+        [MaxLength(DataAnnotationsAttributesHelper.CustomerUerCountryMaxLength)]
         public string Country { get; set; }
 
         [Required]
-        [MaxLength(100)]
+        [MaxLength(DataAnnotationsAttributesHelper.CustomerUserManufacturingMaxLength)]
         public string Manufacturing { get; set; }
 
         [Required]
-        [MaxLength(100)]
+        [MaxLength(DataAnnotationsAttributesHelper.UserRegionMaxLength)]
         public string Region { get; set; }
 
         [RegularExpression(@"\+\d{10,12}", ErrorMessage = "Phone start with a '+' sign and contain between 10 and 20 symbols.")]

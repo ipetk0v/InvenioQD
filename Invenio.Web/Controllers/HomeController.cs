@@ -1,5 +1,4 @@
 ﻿using Invenio.Service.Interfaces;
-using Invenio.Service.Models;
 using Invenio.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
