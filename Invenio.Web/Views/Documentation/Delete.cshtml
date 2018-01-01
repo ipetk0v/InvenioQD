@@ -1,0 +1,35 @@
+﻿@model FileModel
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+            <div class="col-md-12">
+                <h2 style="margin-bottom: 30px; "><span class="fa fa-file"></span> Confirm deletion of this file</h2>
+            </div>
+            <hr />
+            <div class="form-group">
+                <label asp-for="@Model.FileName"></label>
+                <input asp-for="@Model.FileName" class="form-control" disabled />
+                <span asp-validation-for="@Model.FileName" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <a href="/Documentation/Index" class="btn btn-block btn-default">Back</a>
+            </div>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-block btn-danger">Delete</button>
+            </div>
+            <div class="form-group" style="visibility:hidden">
+                <label asp-for="@Model.Id"></label>
+                <input asp-for="@Model.Id" class="form-control" />
+                <span asp-validation-for="@Model.Id" class="text-danger"></span>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+
+

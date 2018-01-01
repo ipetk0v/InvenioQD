@@ -22,6 +22,28 @@ namespace Invenio.Data.Migrations
                 .HasAnnotation("ProductVersion", "2.0.1-rtm-125")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Invenio.Data.Models.Files", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ContentType");
+
+                    b.Property<byte[]>("FileBytes");
+
+                    b.Property<string>("FileContent");
+
+                    b.Property<string>("FileExtension");
+
+                    b.Property<string>("FileName");
+
+                    b.Property<int>("Size");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Files");
+                });
+
             modelBuilder.Entity("Invenio.Data.Models.Order", b =>
                 {
                     b.Property<string>("Id")

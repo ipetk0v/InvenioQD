@@ -42,6 +42,7 @@ namespace Invenio.Web
             services.AddTransient<IUsersService, UsersService>();
             services.AddTransient<IOrdersService, OrdersService>();
             services.AddTransient<IReportsService, ReportsService>();
+            services.AddTransient<IFilesService, FilesService>();
 
             services.AddMvc(options =>
             {

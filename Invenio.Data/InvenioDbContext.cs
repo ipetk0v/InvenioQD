@@ -10,6 +10,7 @@ namespace Invenio.Data
         public DbSet<User> User { get; set; }
         public DbSet<Report> Report { get; set; }
         public DbSet<Order> Order { get; set; }
+        public DbSet<Files> Files { get; set; }
 
         public InvenioDbContext(DbContextOptions<InvenioDbContext> options)
             : base(options)

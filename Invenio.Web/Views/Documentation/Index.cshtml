@@ -1,5 +1,7 @@
-﻿@{
-        ViewData["title"] = "documentation";
+﻿@model IEnumerable<FileModel>
+@{
+    ViewData["title"] = "documentation";
+    var nextNumber = 1;
 }
 
 <div class="row">
@@ -9,16 +11,20 @@
     <div class="col-md-2" style="padding-top: 25px;padding-left: 25px;">
         @if (User.IsInRole("GeneralManager") || User.IsInRole("RegionalManager"))
         {
-        <a href="documentation/create">
-            <label class="btn btn-success btn-file">
-                Add File <input type="file" style="display: none;">
-            </label>
-        </a>
+            <a href="/Documentation/Upload">
+                <label class="btn btn-success btn-file">
+                    Add File
+                </label>
+            </a>
         }
     </div>
 </div>
 
-<hr />
+<hr style="
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 20px;
+" />
 
 <div class="col-xs-12">
     <div class="box">
@@ -31,23 +37,28 @@
                         <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
                             <thead>
                                 <tr>
-                                    <th>File Name</th>
+                                    <th>#</th>
+                                    <th>Name</th>
                                     <th>Type</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th>Ime na faila</th>
-                                    <th>Excel</th>
-                                    <th>
-                                        @if (User.IsInRole("GeneralManager") || User.IsInRole("RegionalManager"))
-        {
-                                        <a class="btn btn-danger">Delete</a>
-        }
-                                        <a class="btn btn-success">Download</a>
-                                    </th>
-                                </tr>
+                                @foreach (var file in Model)
+                                {
+                                    <tr>
+                                        <td>@(nextNumber++)</td>
+                                        <td>@file.FileName</td>
+                                        <td>@file.ContentType</td>
+                                        <th>
+                                            @if (User.IsInRole("GeneralManager") || User.IsInRole("RegionalManager"))
+                                            {
+                                                <a href="Delete/@file.Id" class="btn btn-danger">Delete</a>
+                                            }
+                                            <a href="Download/@file.Id" class="btn btn-success">Download</a>
+                                        </th>
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                     </div>
