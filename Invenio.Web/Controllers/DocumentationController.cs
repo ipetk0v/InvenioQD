@@ -3,6 +3,7 @@ using Invenio.Service.Models;
 using Invenio.Web.Models.DocumentationViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.IO;
 
 namespace Invenio.Web.Controllers
 {
@@ -51,6 +52,13 @@ namespace Invenio.Web.Controllers
             files.Delete(file.Id);
 
             return Redirect("../../Documentation/Index");
+        }
+
+        public IActionResult Download(string id)
+        {
+            var file = files.CurrentFile(int.Parse(id));
+
+            return File(file.FileBytes, "application/x-msdownload", file.FileName);
         }
     }
 }

@@ -11,9 +11,9 @@ namespace Invenio.Web.Infrastructures.Attributes
 
             var fileName = file.FileName.Substring(file.FileName.Length - 4);                      
 
-            if (fileName != "xlsx" && fileName != "docx" && fileName != ".PPT")
+            if (fileName != "xlsx" && fileName != "docx" && fileName != "pptx" && fileName != ".pdf")
             {
-                return new ValidationResult(ErrorMessage = "Allowed file extensions: Xlsx, Docx, PPT");
+                return new ValidationResult(ErrorMessage = "Allowed file extensions: Xlsx, Docx, PPT, pdf");
             }
 
             return ValidationResult.Success;
