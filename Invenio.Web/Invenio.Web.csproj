@@ -1978,4 +1978,8 @@
     <ProjectReference Include="..\Invenio.Service\Invenio.Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Documentation\Data\" />
+  </ItemGroup>
+
 </Project>

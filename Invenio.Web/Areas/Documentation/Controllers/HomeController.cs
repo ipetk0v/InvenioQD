@@ -1,18 +1,18 @@
 ﻿using Invenio.Service.Interfaces;
 using Invenio.Service.Models;
-using Invenio.Web.Models.DocumentationViewModels;
+using Invenio.Web.Areas.Documentation.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.IO;
 
-namespace Invenio.Web.Controllers
+namespace Invenio.Web.Areas.Documentation.Controllers
 {
     [Authorize]
-    public class DocumentationController : Controller
+    [Area("Documentation")]
+    public class HomeController : Controller
     {
         private readonly IFilesService files;
 
-        public DocumentationController(IFilesService files)
+        public HomeController(IFilesService files)
         {
             this.files = files;
         }
@@ -51,7 +51,7 @@ namespace Invenio.Web.Controllers
 
             files.Delete(file.Id);
 
-            return Redirect("../../Documentation/Index");
+            return Redirect("../../Home/Index");
         }
 
         public IActionResult Download(string id)

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
 
-namespace Invenio.Web.Models.DocumentationViewModels
+namespace Invenio.Web.Areas.Documentation.Models
 {
     public class DocumentationViewModel
     {
