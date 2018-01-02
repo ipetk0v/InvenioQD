@@ -1,8 +1,8 @@
-﻿using Invenio.Data;
+﻿using AutoMapper.QueryableExtensions;
+using Invenio.Data;
 using Invenio.Data.Models;
 using Invenio.Service.Interfaces;
 using Invenio.Service.Models;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Invenio.Service.Implemented
@@ -37,13 +37,9 @@ namespace Invenio.Service.Implemented
         {
             return this.db
                 .Report
-                .Where(u => u.OrderId == id)
-                .Select(r => new ReportModel
-                {
-                    ReportText = r.ReportText,
-                    OderId = r.OrderId
-                })
-                .FirstOrDefault();
+                .Where(u => u.OrderId == id).
+                ProjectTo<ReportModel>()
+                .SingleOrDefault();
         }
     }
 }

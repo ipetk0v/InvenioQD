@@ -1,4 +1,5 @@
-﻿using Invenio.Data;
+﻿using AutoMapper.QueryableExtensions;
+using Invenio.Data;
 using Invenio.Data.Models;
 using Invenio.Service.Interfaces;
 using Invenio.Service.Models;
@@ -40,17 +41,7 @@ namespace Invenio.Service.Implemented
             .Order
             .Where(u => u.CustomerUserId == id)
             .OrderByDescending(d => d.StartOrder)
-            .Select(o => new CustomerOrderModel
-            {
-                Name = o.Name,
-                OrderId = o.Id,
-                StartOrder = o.StartOrder,
-                CountToFinishOrder = o.CountToFinishOrder,
-                FinishOrder = o.FinishOrder,
-                OrderNumber = o.OrderNumber,
-                Status = o.Status,
-                CustomerUserId = o.CustomerUserId,
-                CustomerUserName = o.CustomerUser.FullName
-            }).ToList();
+            .ProjectTo<CustomerOrderModel>()
+            .ToList();
     }
 }

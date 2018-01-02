@@ -1,4 +1,5 @@
-﻿using Invenio.Data;
+﻿using AutoMapper.QueryableExtensions;
+using Invenio.Data;
 using Invenio.Data.Models;
 using Invenio.Service.Interfaces;
 using Invenio.Service.Models;
@@ -21,19 +22,8 @@ namespace Invenio.Service.Implemented
             return this.db
                  .CustomerUser
                  .Where(u => u.Position == PositionType.Customer)
-                 .Select(u => new AllCustomerModel
-                 {
-                     Country = u.Country,
-                     Email = u.Email,
-                     FullName = u.FullName,
-                     Id = u.Id,
-                     Manufacturing = u.Manufacturing,
-                     PhoneNumber = u.PhoneNumber,
-                     Region = u.Region,
-                     UserName = u.UserName,
-                     Position = u.Position,
-                     orderCount = u.Orders.Count
-                 }).ToList();
+                 .ProjectTo<AllCustomerModel>()
+                 .ToList();
         }
 
         public IEnumerable<AllEmployeeModel> AllEmployee()
@@ -41,16 +31,8 @@ namespace Invenio.Service.Implemented
             return this.db
             .User
             .Where(u => u.Position != PositionType.Customer)
-            .Select(u => new AllEmployeeModel
-            {
-                Email = u.Email,
-                FullName = u.FullName,
-                Id = u.Id,
-                PhoneNumber = u.PhoneNumber,
-                Region = u.Region,
-                UserName = u.UserName,
-                Position = u.Position
-            }).ToList();
+            .ProjectTo<AllEmployeeModel>()
+            .ToList();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using CameraBazaar.Web.Infrastructures.Extensions;
+﻿using AutoMapper;
+using CameraBazaar.Web.Infrastructures.Extensions;
 using Invenio.Data;
 using Invenio.Data.Models;
 using Invenio.Service.Implemented;
@@ -43,6 +44,8 @@ namespace Invenio.Web
             services.AddTransient<IOrdersService, OrdersService>();
             services.AddTransient<IReportsService, ReportsService>();
             services.AddTransient<IFilesService, FilesService>();
+
+            services.AddAutoMapper();
 
             services.AddMvc(options =>
             {

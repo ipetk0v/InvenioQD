@@ -1,4 +1,5 @@
-﻿using Invenio.Data;
+﻿using AutoMapper.QueryableExtensions;
+using Invenio.Data;
 using Invenio.Data.Models;
 using Invenio.Service.Interfaces;
 using Invenio.Service.Models;
@@ -45,21 +46,11 @@ namespace Invenio.Service.Implemented
         }
 
         public IEnumerable<FileModel> AllFiles()
-        {
-            return this.db
+          => this.db
                 .Files
-                .Select(f => new FileModel
-                {
-                    ContentType = f.ContentType,
-                    FileBytes = f.FileBytes,
-                    FileContent = f.FileContent,
-                    FileExtension = f.FileExtension,
-                    FileName = f.FileName,
-                    Size = f.Size,
-                    Id = f.Id
-                })
+                .ProjectTo<FileModel>()
                 .ToList();
-        }
+
 
         public void Delete(int id)
         {
@@ -73,16 +64,7 @@ namespace Invenio.Service.Implemented
          => this.db
             .Files
             .Where(f => f.Id == id)
-            .Select(f => new FileModel
-            {
-                Id = f.Id,
-                ContentType = f.ContentType,
-                FileBytes = f.FileBytes,
-                FileContent = f.FileContent,
-                FileExtension = f.FileExtension,
-                FileName = f.FileName,
-                Size = f.Size
-            })
-            .FirstOrDefault();
+            .ProjectTo<FileModel>()
+            .SingleOrDefault();
     }
 }

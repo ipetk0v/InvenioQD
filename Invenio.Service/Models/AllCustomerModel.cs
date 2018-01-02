@@ -22,6 +22,6 @@ namespace Invenio.Service.Models
 
         public PositionType Position { get; set; }
 
-        public int orderCount { get; set; }
+        public int OrderCount { get; set; }
     }
 }
