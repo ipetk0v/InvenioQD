@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 namespace Invenio.Web.Controllers
 {
     [Authorize]
-    [Route("[controller]/[action]")]
+    [Area("User")]
     public class ManageController : Controller
     {
         private readonly UserManager<User> userManager;

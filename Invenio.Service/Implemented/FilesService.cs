@@ -76,24 +76,13 @@ namespace Invenio.Service.Implemented
             .Select(f => new FileModel
             {
                 Id = f.Id,
-                FileName = f.FileName
+                ContentType = f.ContentType,
+                FileBytes = f.FileBytes,
+                FileContent = f.FileContent,
+                FileExtension = f.FileExtension,
+                FileName = f.FileName,
+                Size = f.Size
             })
             .FirstOrDefault();
-
-        public FileModel DownloadFiles(int id)
-         => this.db
-                .Files
-                .Where(f => f.Id == id)
-                .Select(f => new FileModel
-                {
-                    Id = f.Id,
-                    ContentType = f.ContentType,
-                    FileBytes = f.FileBytes,
-                    FileContent = f.FileContent,
-                    FileExtension = f.FileExtension,
-                    FileName = f.FileName,
-                    Size = f.Size
-                })
-                .FirstOrDefault();
     }
 }

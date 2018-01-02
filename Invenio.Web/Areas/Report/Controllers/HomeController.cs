@@ -1,16 +1,17 @@
 ﻿using Invenio.Service.Interfaces;
-using Invenio.Web.Models.ReportViewModel;
+using Invenio.Web.Areas.Report.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Invenio.Web.Controllers
+namespace Invenio.Web.Areas.Report.Controllers
 {
     [Authorize]
-    public class ReportController : Controller
+    [Area("Report")]
+    public class HomeController : Controller
     { 
         private readonly IReportsService reports;
 
-        public ReportController(IReportsService reports)
+        public HomeController(IReportsService reports)
         {
             this.reports = reports;
         }
@@ -38,7 +39,7 @@ namespace Invenio.Web.Controllers
         {
             if (!reports.CheckForOrderId(id))
             {
-                return RedirectToAction("Index", "Order");
+                return Redirect("../../order/home/index");
             }
 
             return this.View(reports.ReportById(id));

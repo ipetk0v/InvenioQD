@@ -1,7 +1,7 @@
 ﻿using Invenio.Web.Helper;
 using System.ComponentModel.DataAnnotations;
 
-namespace Invenio.Web.Models.ReportViewModel
+namespace Invenio.Web.Areas.Report.Models
 {
     public class ReportViewModel
     {

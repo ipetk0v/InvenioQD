@@ -18,7 +18,7 @@
     <div class="col-md-2" style="padding-top: 25px;padding-left: 25px;">
         @if (!User.IsInRole("Customer") && !User.IsInRole("TeamLeader"))
         {
-            <a href="/order/create/" class="btn btn-success">Add new order</a>
+            <a href="/order/home/create/" class="btn btn-success">Add new order</a>
         }
     </div>
 </div>
@@ -58,9 +58,9 @@
                                         <td>
                                             @if (!User.IsInRole("Customer"))
                                             {
-                                                <a href="../../Report/Create?orderId=@item.OrderId" class="btn btn-primary">Create</a>
+                                                <a href="../../../../Report/Home/Create?orderId=@item.OrderId" class="btn btn-primary">Create</a>
                                             }
-                                            <a href="../../Report/ReportById/@item.OrderId" class="btn btn-warning">View</a>
+                                            <a href="../../../../Report/Home/ReportById/@item.OrderId" class="btn btn-warning">View</a>
                                         </td>
                                     </tr>
                                 }

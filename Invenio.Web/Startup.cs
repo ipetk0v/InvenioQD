@@ -73,9 +73,13 @@ namespace Invenio.Web
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller}/{action}/{id?}",
-                    defaults: new { controller = "Home", action = "Index" });
+                     name: "areas",
+                     template: "{area:exists}/{controller}/{action}/{id?}");
+
+                routes.MapRoute(
+                     name: "default",
+                     template: "{controller}/{action}/{id?}",
+                     defaults: new { controller = "Home", action = "Index" });
             });
         }
     }

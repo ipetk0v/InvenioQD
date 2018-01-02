@@ -21,7 +21,9 @@ namespace Invenio.Service.Implemented
 
         public void Create(string ReportText, string orderId)
         {
-            this.db.Report.Where(o => o.OrderId == orderId).ToList().Clear();
+            var a = this.db.Report.Where(o => o.OrderId == orderId).ToList();
+
+            db.Report.RemoveRange(a);
 
             this.db.Add(new Report
             {

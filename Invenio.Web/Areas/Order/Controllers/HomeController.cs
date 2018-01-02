@@ -1,22 +1,23 @@
 ﻿using Invenio.Data.Models;
 using Invenio.Service.Interfaces;
-using Invenio.Web.Models.OrderViewModels;
+using Invenio.Web.Areas.Order.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Security.Claims;
 
-namespace Invenio.Web.Controllers
+namespace Invenio.Web.Areas.Order.Controllers
 {
     [Authorize]
-    public class OrderController : Controller
+    [Area("Order")]
+    public class HomeController : Controller
     {
         private readonly IOrdersService orders;
         private readonly UserManager<User> user;
         private readonly IUsersService users;
 
-        public OrderController(IOrdersService orders, UserManager<User> user, IUsersService users)
+        public HomeController(IOrdersService orders, UserManager<User> user, IUsersService users)
         {
             this.orders = orders;
             this.user = user;

@@ -1,10 +1,8 @@
-﻿using Invenio.Service.Models;
-using Invenio.Web.Helper;
+﻿using Invenio.Web.Helper;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Invenio.Web.Models.OrderViewModels
+namespace Invenio.Web.Areas.Order.Models
 {
     public class OrderViewModel
     {

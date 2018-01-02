@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace Invenio.Web.Controllers
 {
     [Authorize]
-    [Route("[controller]/[action]")]
+    [Area("User")]
     public class AccountController : Controller
     {
         private readonly UserManager<User> _userManager;
@@ -58,7 +58,7 @@ namespace Invenio.Web.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return RedirectToLocal(returnUrl);
+                    return Redirect("../../Home/Index");
                 }
                 if (result.RequiresTwoFactor)
                 {
@@ -243,9 +243,9 @@ namespace Invenio.Web.Controllers
                     {
                         _logger.LogInformation("User created a new account with password.");
 
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        _logger.LogInformation("User created a new account with password.");
-                        return RedirectToLocal(returnUrl);
+                        //await _signInManager.SignInAsync(user, isPersistent: false);
+                        //_logger.LogInformation("User created a new account with password.");
+                        return Redirect("../../Home/Index");
                     }
 
                 }               
@@ -293,9 +293,9 @@ namespace Invenio.Web.Controllers
                     {
                         _logger.LogInformation("User created a new account with password.");
 
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        _logger.LogInformation("User created a new account with password.");
-                        return RedirectToLocal(returnUrl);
+                        //await _signInManager.SignInAsync(user, isPersistent: false);
+                        //_logger.LogInformation("User created a new account with password.");
+                        return Redirect("../../Home/Index");
                     }
 
                 }
