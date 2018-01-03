@@ -10,7 +10,6 @@ namespace Invenio.Web.Infrastructures.Mapping
         public AutoMapperProfile()
         {
             this.CreateMap<Order, OrderViewModel>();
-            this.CreateMap<Order, CustomerOrderModel>();
             this.CreateMap<Files, FileModel>();
             this.CreateMap<Report,ReportModel>();
             this.CreateMap<CustomerUser, AllCustomerModel>()

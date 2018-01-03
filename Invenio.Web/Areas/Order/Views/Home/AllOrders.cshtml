@@ -58,7 +58,7 @@
                                         <td>
                                             @if (!User.IsInRole("Customer"))
                                             {
-                                                <a href="../../../../Report/Home/Create?orderId=@item.OrderId" class="btn btn-primary">Create</a>
+                                                <a href="../../../../Report/Home/Create?OrderId=@item.OrderId" class="btn btn-primary">Create</a>
                                             }
                                             <a href="../../../../Report/Home/ReportById/@item.OrderId" class="btn btn-warning">View</a>
                                         </td>

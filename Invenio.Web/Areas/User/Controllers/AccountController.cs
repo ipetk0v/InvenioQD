@@ -196,21 +196,21 @@ namespace Invenio.Web.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
+        [Authorize]
         public IActionResult RegisterEmployee(string returnUrl = null)
         {
             return View();
         }
 
         [HttpGet]
-        [AllowAnonymous]
+        [Authorize]
         public IActionResult RegisterCustomer(string returnUrl = null)
         {
             return View();
         }
 
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RegisterEmployee(RegisterEmployeeViewModel model, string returnUrl = null)
         {
@@ -257,7 +257,7 @@ namespace Invenio.Web.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RegisterCustomer(RegisterCustomerViewModel model, string returnUrl = null)
         {

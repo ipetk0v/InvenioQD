@@ -29,19 +29,29 @@ namespace Invenio.Service.Implemented
                 Status = false,
                 OrderNumber = OderNumber,
                 StartOrder = DateTime.UtcNow,
-                CustomerUserId = customerId                
+                CustomerUserId = customerId
             };
 
             this.db.Order.Add(order);
             db.SaveChanges();
         }
 
-        public IEnumerable<CustomerOrderModel> OrderById(string id)
-         => this.db
+           public IEnumerable<CustomerOrderModel> OrderById(string id)
+             => this.db
             .Order
             .Where(u => u.CustomerUserId == id)
             .OrderByDescending(d => d.StartOrder)
-            .ProjectTo<CustomerOrderModel>()
-            .ToList();
+            .Select(o => new CustomerOrderModel
+            {
+                Name = o.Name,
+                OrderId = o.Id,
+                StartOrder = o.StartOrder,
+                CountToFinishOrder = o.CountToFinishOrder,
+                FinishOrder = o.FinishOrder,
+                OrderNumber = o.OrderNumber,
+                Status = o.Status,
+                CustomerUserId = o.CustomerUserId,
+                CustomerUserName = o.CustomerUser.FullName
+            }).ToList();
     }
 }

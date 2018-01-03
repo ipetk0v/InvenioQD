@@ -35,6 +35,8 @@ namespace Invenio.Web.Areas.Documentation.Controllers
 
             files.UploadFileAsync(model.File);
 
+            TempData["SuccessMessage"] = $"File {model.File.FileName} uploaded successfully";
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -50,6 +52,8 @@ namespace Invenio.Web.Areas.Documentation.Controllers
             }
 
             files.Delete(file.Id);
+
+            TempData["SuccessMessage"] = $"Тhe file {file.FileName} has been deleted";
 
             return Redirect("../../Home/Index");
         }

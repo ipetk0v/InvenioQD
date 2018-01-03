@@ -16,9 +16,9 @@ namespace Invenio.Web.Areas.Report.Controllers
             this.reports = reports;
         }
 
-        public IActionResult Create(string orderId)
+        public IActionResult Create(string OrderId)
         {
-            ViewBag.OrderId = orderId;
+            ViewBag.OrderId = OrderId;
             return this.View();
         }
 
@@ -32,14 +32,23 @@ namespace Invenio.Web.Areas.Report.Controllers
             }
 
             this.reports.Create(model.TextReport, model.OrderId);
+
+            TempData["SuccessMessage"] = $"Report created successfully";
             return RedirectToAction(nameof(ReportById));
         }
 
         public IActionResult ReportById(string id)
         {
+            var successMessage = TempData["SuccessMessage"];
+
             if (!reports.CheckForOrderId(id))
             {
-                return Redirect("../../order/home/index");
+                if (successMessage == null)
+                {
+                    TempData["AlertMessage"] = "The report you want to see does not exist!";
+                }
+
+                return Redirect("../../../order/home/index");
             }
 
             return this.View(reports.ReportById(id));

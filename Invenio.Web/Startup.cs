@@ -77,7 +77,8 @@ namespace Invenio.Web
             {
                 routes.MapRoute(
                      name: "areas",
-                     template: "{area:exists}/{controller}/{action}/{id?}");
+                     template: "{area:exists}/{controller}/{action}/{id?}",
+                     defaults: new { area = "User", controller = "Account", action = "Login" });
 
                 routes.MapRoute(
                      name: "default",

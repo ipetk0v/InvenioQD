@@ -1,4 +1,4 @@
-﻿ @inject UserManager<User> UserManager;
+﻿@inject UserManager<User> UserManager;
 
 <head>
     <meta charset="utf-8">
@@ -59,7 +59,7 @@
                                 <li class="user-header">
                                     <img src="https://app.nimia.com/static/img/default_profile.png" class="img-circle" alt="User Image">
                                     <p>
-                                        @UserManager.GetUserAsync(User).Result.FullName - 
+                                        @UserManager.GetUserAsync(User).Result.FullName -
                                         @PositionEnumDisplay.GetEnumAsAString(User.Identities.First().Claims.Select(x => x.Value).Skip(3).First())
                                     </p>
                                 </li>
@@ -153,6 +153,29 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Main content -->
+            @{
+                var message = TempData["AlertMessage"] ?? string.Empty;
+                var successMessage = TempData["SuccessMessage"] ?? string.Empty;
+
+                if (!string.IsNullOrEmpty(message.ToString()))
+                {
+                    <div class="alert alert-warning alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h4><i class="icon fa fa-warning"></i> Alert!</h4>
+                        @message
+                    </div>
+                }
+                else if (!string.IsNullOrEmpty(successMessage.ToString()))
+                {
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h4><i class="icon fa fa-check"></i> Alert!</h4>
+                        @successMessage
+                    </div>
+
+                }
+            }
+
             @RenderBody()
             <!-- /.content -->
         </div>

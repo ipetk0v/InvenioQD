@@ -59,6 +59,8 @@ namespace Invenio.Web.Areas.Order.Controllers
                 model.OrderNumber,
                 model.CustomerName);
 
+            TempData["SuccessMessage"] = $"Order {model.OrderName} created successfully";
+
             return RedirectToAction(nameof(Index));
         }
 
